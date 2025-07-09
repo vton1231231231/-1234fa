@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Findium Bot | Поиск информации в Telegram</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #0f172a, #1e293b);
+      --card-gradient: linear-gradient(145deg, #1e293b, #0f172a);
+      --primary: #38bdf8;
+      --secondary: #818cf8;
+      --accent: #9333ea;
+      --text-light: #cbd5e1;
+      --text-muted: #94a3b8;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-gradient);
+      color: white;
+      overflow-x: hidden;
+      position: relative;
+    }
+    body::before {
+      content: "";
+      position: absolute;
+      top: -100px;
+      left: -100px;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at center, rgba(56, 189, 248, 0.1), transparent 60%),
+                  radial-gradient(circle at 30% 70%, rgba(147, 51, 234, 0.08), transparent 60%),
+                  radial-gradient(circle at 70% 30%, rgba(129, 140, 248, 0.08), transparent 60%);
+      z-index: 0;
+      animation: pulseBG 15s infinite linear;
+    }
+    @keyframes pulseBG {
+      0% { transform: scale(1); opacity: 0.9; }
+      50% { transform: scale(1.05); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.9; }
+    }
+    header {
+      position: relative;
+      padding: 4rem 1rem 2rem;
+      text-align: center;
+      z-index: 1;
+    }
+    h1 {
+      font-size: 2.5rem;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: fadeIn 2s ease;
+    }
+    p.description {
+      font-size: 1.1rem;
+      margin-top: 1rem;
+      color: var(--text-light);
+      animation: fadeIn 3s ease;
+    }
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 2rem auto;
+      max-width: 1000px;
+      gap: 1.5rem;
+      padding: 0 1rem;
+      position: relative;
+      z-index: 1;
+    }
+    .card {
+      background: var(--card-gradient);
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      flex: 1 1 260px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      backdrop-filter: blur(8px);
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+    .card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+    .buttons {
+      margin-top: 2rem;
+      text-align: center;
+      animation: fadeIn 4s ease;
+      position: relative;
+      z-index: 1;
+    }
+    .buttons a {
+      background: linear-gradient(to right, var(--primary), var(--accent));
+      color: #0f172a;
+      padding: 1rem 1.5rem;
+      margin: 0.5rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: inline-block;
+      white-space: nowrap;
+    }
+    .buttons a:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(56, 189, 248, 0.4);
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      position: relative;
+      z-index: 1;
+    }
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+      p.description {
+        font-size: 1rem;
+      }
+      .buttons a {
+        font-size: 0.95rem;
+        padding: 0.9rem 1.2rem;
+      }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Findium — Поиск данных</h1>
+    <p class="description">Инструмент для OSINT-аналитики: бот находит данные по ФИО, номеру телефона, ИНН и не только</p>
+  </header>
+
+  <section class="features">
+    <div class="card">
+      <h3>🔍 Поиск по ФИО</h3>
+      <p>Найди информацию о человеке по имени и фамилии за пару секунд.</p>
+    </div>
+    <div class="card">
+      <h3>📞 Поиск по номеру</h3>
+      <p>Узнай, кто тебе звонил или кому принадлежит номер.</p>
+    </div>
+    <div class="card">
+      <h3>🧾 Поиск по ИНН</h3>
+      <p>Анализируй юридические и финансовые данные по ИНН.</p>
+    </div>
+  </section>
+
+  <div class="buttons">
+    <a href="https://t.me/findiumbot" target="_blank">Перейти к боту</a>
+    <a href="https://t.me/findiumnews" target="_blank">Новостной канал</a>
+  </div>
+
+  <footer>
+    © 2025 FindiumBot. Создано для исследовательских целей.
+  </footer>
+</body>
+</html>
